@@ -1,0 +1,87 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom animations for Alpine.js transitions */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Plyr.io customizations */
+.plyr {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.plyr__controls {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+}
+
+/* Loading spinner */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Custom components */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-lg shadow-md overflow-hidden;
+  }
+  
+  .anime-card {
+    @apply relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer;
+  }
+  
+  .anime-card img {
+    @apply w-full h-64 object-cover transition-transform duration-300;
+  }
+  
+  .anime-card-overlay {
+    @apply absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 flex items-end p-4;
+  }
+  
+  .input-field {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent;
+  }
+  
+  .nav-link {
+    @apply text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200;
+  }
+  
+  .nav-link-active {
+    @apply bg-primary-100 text-primary-700;
+  }
+}
+
+/* Custom utilities */
+@layer utilities {
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+}
