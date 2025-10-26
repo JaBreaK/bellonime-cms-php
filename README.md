@@ -154,7 +154,7 @@ location / {
 1. Akses `http://localhost/bellonime/admin/login.php`
 2. Login dengan:
    - Username: `admin`
-   - Password: `admin123`
+   - Password: `password`
 3. Mulai tambah anime, episode, dan genre
 
 ### Menambah Anime
