@@ -91,7 +91,7 @@ Akses `http://localhost/bellonime/setup.php` dan ikuti instruksi:
 3. Setup akan otomatis:
    - Membuat database
    - Import semua tabel
-   - Membuat user admin (username: admin, password: admin123)
+   - Membuat user admin (username: admin, password: password)
    - Menambah sample data (5 anime dengan episode)
    - Mengkonfigurasi file koneksi
 
