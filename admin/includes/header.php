@@ -1,5 +1,8 @@
 <!DOCTYPE html>
-<html lang="id" x-data="{ sidebar: true }">
+
+<html lang="id" x-data="{ sidebar: localStorage.getItem('sidebarOpen') === null ? true : (localStorage.getItem('sidebarOpen') === 'true') }" 
+
+              x-init="$watch('sidebar', value => localStorage.setItem('sidebarOpen', value))">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

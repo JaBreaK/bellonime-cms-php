@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 22 Okt 2025 pada 19.12
--- Versi server: 10.4.32-MariaDB
--- Versi PHP: 8.2.12
+-- Host: sql103.infinityfree.com
+-- Waktu pembuatan: 26 Okt 2025 pada 07.23
+-- Versi server: 11.4.7-MariaDB
+-- Versi PHP: 7.2.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `bellonime`
+-- Database: `if0_39451613_bellonime`
 --
 
 -- --------------------------------------------------------
@@ -44,7 +45,8 @@ CREATE TABLE `admins` (
 --
 
 INSERT INTO `admins` (`id`, `username`, `email`, `password`, `full_name`, `role`, `last_login`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@bellonime.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator', 'super_admin', '2025-10-22 12:22:44', '2025-10-21 13:17:28', '2025-10-22 12:22:44');
+(1, 'admin', 'admin@bellonime.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator', 'super_admin', '2025-10-26 07:37:42', '2025-10-21 13:17:28', '2025-10-26 07:37:42'),
+(2, 'admin1', 'admin1@bellonime.com', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'Administrator', 'admin', '2025-10-26 09:40:16', '2025-10-21 13:17:28', '2025-10-26 09:40:16');
 
 -- --------------------------------------------------------
 
@@ -78,12 +80,14 @@ CREATE TABLE `animes` (
 --
 
 INSERT INTO `animes` (`id`, `title`, `slug`, `synopsis`, `poster`, `background`, `type`, `status`, `studio`, `total_episodes`, `duration`, `rating`, `year`, `season`, `views`, `featured`, `created_at`, `updated_at`) VALUES
-(2, 'One Piece', 'one-piece', '', 'https://cdn.myanimelist.net/images/anime/1810/139965.jpg', 'https://cdn.myanimelist.net/images/anime/1810/139965.jpg', 'TV', 'Ongoing', '', 1000000, 2, 9.00, 1999, 'Spring', 2, 1, '2025-10-22 13:27:43', '2025-10-22 15:54:14'),
-(3, 'One Punch Man 3', 'one-punch-man-3', '', 'https://cdn.myanimelist.net/images/anime/1885/127108.jpg', 'https://cdn.myanimelist.net/images/anime/1885/127108.jpg', 'TV', 'Ongoing', '', 0, 24, 7.00, 2025, 'Spring', 2, 0, '2025-10-22 13:34:44', '2025-10-22 15:53:29'),
-(4, 'Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga', 'ansatsusha-de-aru-ore-no-status-ga-yuusha-yori-mo-akiraka-ni-tsuyoi-no-da-ga', '', 'https://cdn.myanimelist.net/images/anime/1029/148034.jpg', '', 'TV', 'Ongoing', '', 0, 24, 7.30, 2025, '', 3, 0, '2025-10-22 13:48:59', '2025-10-22 15:52:50'),
-(5, 'Chitose-kun wa Ramune Bin no Naka', 'chitose-kun-wa-ramune-bin-no-naka', '', 'https://cdn.myanimelist.net/images/anime/1015/151233.jpg', 'https://cdn.myanimelist.net/images/anime/1925/152152.jpg', 'TV', 'Ongoing', '', 0, 0, 7.30, 2025, '', 3, 0, '2025-10-22 13:57:47', '2025-10-22 16:03:59'),
-(6, 'Tondemo Skill de Isekai Hourou Meshi 2', 'tondemo-skill-de-isekai-hourou-meshi-2', '', 'https://cdn.myanimelist.net/images/anime/1778/152192.jpg', 'https://cdn.myanimelist.net/images/anime/1778/152192.jpg', 'TV', 'Ongoing', '', 0, 0, 7.70, 2025, '', 7, 0, '2025-10-22 14:16:39', '2025-10-22 16:03:48'),
-(7, 'Overlord Movie 3: Sei Oukoku-hen', 'overlord-movie-3-sei-oukoku-hen', '', 'https://cdn.myanimelist.net/images/anime/1954/144101.jpg', 'https://cdn.myanimelist.net/images/anime/1954/144101.jpg', 'Movie', 'Complete', '', 1, 120, 9.00, 2025, 'Spring', 1, 1, '2025-10-22 14:28:11', '2025-10-22 16:52:22');
+(2, 'One Piece', 'one-piece', '', 'https://cdn.myanimelist.net/images/anime/1810/139965.jpg', 'https://cdn.myanimelist.net/images/anime/1810/139965.jpg', 'TV', 'Ongoing', '', 1000000, 2, '9.00', 1999, 'Spring', 3, 1, '2025-10-22 13:27:43', '2025-10-26 07:37:03'),
+(3, 'One Punch Man 3', 'one-punch-man-3', '', 'https://cdn.myanimelist.net/images/anime/1885/127108.jpg', 'https://cdn.myanimelist.net/images/anime/1885/127108.jpg', 'TV', 'Ongoing', '', 0, 24, '7.00', 2025, 'Spring', 3, 0, '2025-10-22 13:34:44', '2025-10-26 09:27:47'),
+(4, 'Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga', 'ansatsusha-de-aru-ore-no-status-ga-yuusha-yori-mo-akiraka-ni-tsuyoi-no-da-ga', '', 'https://cdn.myanimelist.net/images/anime/1029/148034.jpg', '', 'TV', 'Ongoing', '', 0, 24, '7.30', 2025, '', 3, 0, '2025-10-22 13:48:59', '2025-10-22 15:52:50'),
+(6, 'Tondemo Skill de Isekai Hourou Meshi 2', 'tondemo-skill-de-isekai-hourou-meshi-2', '', 'https://cdn.myanimelist.net/images/anime/1778/152192.jpg', 'https://cdn.myanimelist.net/images/anime/1778/152192.jpg', 'TV', 'Ongoing', '', 0, 0, '7.70', 2025, '', 9, 0, '2025-10-22 14:16:39', '2025-10-26 06:38:07'),
+(7, 'Overlord Movie 3: Sei Oukoku-hen', 'overlord-movie-3-sei-oukoku-hen', '', 'https://cdn.myanimelist.net/images/anime/1954/144101.jpg', 'https://cdn.myanimelist.net/images/anime/1954/144101.jpg', 'Movie', 'Complete', '', 1, 120, '9.00', 2025, 'Spring', 2, 1, '2025-10-22 14:28:11', '2025-10-26 09:27:40'),
+(8, 'Mugen Gacha', 'mugen-gacha', 'Ketika Light diusir dari Persatuan Suku, mantan rekan-rekannya langsung menyerangnya. Light lolos dari pengkhianatan keji ini dengan susah payah…hanya untuk mendapati dirinya berada di bagian terdalam Naraku, Dungeon paling berbahaya di dunia ini! Agar tidak dimakan monster karnivora, ia menggunakan Gacha Tak Terbatas, satu-satunya keahlian sihirnya. Namun, yang sebelumnya hanya menghasilkan barang-barang rongsokan, kali ini Mei—seorang petarung cantik Level 9999 dalam balutan pakaian pelayan—muncul! Tiga tahun kemudian, Light telah membangun kerajaannya sendiri di ruang bawah tanah terpencil ini, memanggil lebih banyak prajurit cantik Level 9999 yang mengabdi padanya. Kini, sebagai Penguasa Tertinggi Level 9999 yang kuat, Light berencana untuk naik ke permukaan dan membalas dendam pada para pengkhianatnya satu per satu!', 'https://cdn.myanimelist.net/images/anime/1163/151246.jpg', '', 'TV', 'Ongoing', '', 0, 24, '6.70', 2025, 'Fall', 0, 1, '2025-10-26 05:24:17', '2025-10-26 05:24:17'),
+(9, 'Chitose-kun wa Ramune Bin no Naka', 'chitose-kun-wa-ramune-bin-no-naka', 'Hinaan yang ditujukan pada Chitose Saku tak terhitung banyaknya. Dijuluki “si playboy brengsek kelas 5,” ia terus-menerus dihina secara online oleh mereka yang iri pada popularitasnya. Beruntung, hal itu hampir tidak memengaruhi kepercayaan diri Saku. Di luar forum internet sempit, ia adalah figur yang dihormati oleh teman-teman sekelasnya dan siswa teladan yang dipercaya oleh guru-gurunya.Saat tahun kedua SMA-nya dimulai, Saku bertemu kembali dengan teman-teman lamanya dan berteman dengan yang baru, semua berasal dari kalangan elit sosial sekolah. Tapi, kesenangan itu terhenti saat guru kelasnya menyuruh Saku meyakinkan teman sekelasnya yang tertutup, Yamazaki Kenta, untuk kembali ke sekolah. Ingin menyelesaikan masalah dengan cepat, Saku mengunjungi rumah Kenta keesokan harinya. Tapi tugas itu ternyata lebih sulit dari yang ia duga ketika ia menemukan bahwa Kenta benar-benar membencinya. Kalau ia ingin menjaga citra sempurna, Saku harus menemukan cara untuk memenangkan hati Kenta dan membawanya kembali ke sekolah.', 'https://v1.samehadaku.how/wp-content/uploads/2025/10/Chitose-kun-wa-Ramune-Bin-no-Naka.jpg', 'https://v1.samehadaku.how/wp-content/uploads/2025/10/Chitose-kun-wa-Ramune-Bin-no-Naka.jpg', 'TV', 'Ongoing', '', 0, 24, '7.30', 2025, 'Fall', 0, 1, '2025-10-26 05:29:40', '2025-10-26 06:37:08'),
+(10, 'Mikata Ga Yowasugite Hojo Mahou', 'mikata-ga-yowasugite-hojo-mahou', '“Tim ini tidak membutuhkan penyihir tidak kompeten yang hanya bisa menggunakan sihir pendukung. Kau dipecat, Alec Ygret.”Tiba-tiba, Alec — seorang penyihir istana yang bergabung dengan kelompok pangeran mahkota untuk membantunya menaklukkan Dungeon — diusir dari tim tersebut. Bukan hanya dari tim, namun karena penindasan dari sang pangeran mahkota, Alec juga diusir dari istana kerajaan. Saat ia berada di ujung keputusasaan, seorang teman dari Akademi Sihir menghampirinya.“Hai, Alec. Apakah kau ingin mencoba menaklukkan Dungeon bersama kami lagi?”Dengan demikian, bersama teman-teman lamanya yang dulu pernah berpetualang bersamanya, Alec memulai perjalanan keduanya dalam hidup. Inilah kisah petualangan seorang mantan Penyihir Istana yang telah ditinggalkan.Empat tahun lalu, Lasting Period — sebuah kelompok beranggotakan empat orang yang dulu disebut sebagai “legendaris” — perlahan mulai menyebarkan namanya ke seluruh dunia.', 'https://v1.samehadaku.how/wp-content/uploads/2025/10/Mikata-ga-Yowasugite-Hojo-Mahou.jpg', 'https://v1.samehadaku.how/wp-content/uploads/2025/10/Mikata-ga-Yowasugite-Hojo-Mahou.jpg', 'TV', 'Ongoing', '', 0, 24, '6.30', 2025, 'Fall', 0, 0, '2025-10-26 08:56:32', '2025-10-26 08:56:32');
 
 -- --------------------------------------------------------
 
@@ -102,49 +106,54 @@ CREATE TABLE `anime_genre` (
 
 INSERT INTO `anime_genre` (`anime_id`, `genre_id`) VALUES
 (2, 1),
-(2, 2),
-(2, 3),
-(2, 4),
-(2, 5),
-(2, 6),
-(2, 7),
-(2, 8),
-(2, 9),
-(2, 10),
-(2, 11),
-(2, 12),
-(2, 13),
-(2, 14),
 (3, 1),
-(5, 3),
-(5, 8),
 (6, 1),
-(6, 2),
-(6, 3),
-(6, 4),
-(6, 5),
-(6, 6),
-(6, 7),
-(6, 8),
-(6, 9),
-(6, 10),
-(6, 11),
-(6, 12),
-(6, 13),
-(6, 14),
 (7, 1),
+(8, 1),
+(10, 1),
+(2, 2),
+(6, 2),
 (7, 2),
+(10, 2),
+(2, 3),
+(6, 3),
 (7, 3),
+(9, 3),
+(2, 4),
+(6, 4),
 (7, 4),
+(2, 5),
+(6, 5),
 (7, 5),
+(8, 5),
+(10, 5),
+(2, 6),
+(6, 6),
 (7, 6),
+(2, 7),
+(6, 7),
 (7, 7),
+(2, 8),
+(6, 8),
 (7, 8),
+(9, 8),
+(2, 9),
+(6, 9),
 (7, 9),
+(2, 10),
+(6, 10),
 (7, 10),
+(2, 11),
+(6, 11),
 (7, 11),
+(2, 12),
+(6, 12),
 (7, 12),
+(2, 13),
+(6, 13),
 (7, 13),
+(2, 14),
+(6, 14),
 (7, 14);
 
 -- --------------------------------------------------------
@@ -164,6 +173,15 @@ CREATE TABLE `comments` (
   `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data untuk tabel `comments`
+--
+
+INSERT INTO `comments` (`id`, `user_id`, `anime_id`, `episode_id`, `content`, `status`, `created_at`, `updated_at`) VALUES
+(1, NULL, 2, 3, 'mantab slurr', 'approved', '2025-10-25 09:43:26', '2025-10-25 09:43:26'),
+(2, NULL, 2, 3, 'gege', 'approved', '2025-10-25 09:43:33', '2025-10-25 09:43:33'),
+(3, NULL, 3, 21, 'BOTAK KEREN!!', 'approved', '2025-10-26 09:28:25', '2025-10-26 09:28:25');
+
 -- --------------------------------------------------------
 
 --
@@ -181,25 +199,42 @@ CREATE TABLE `episodes` (
   `duration` int(11) DEFAULT 0,
   `views` int(11) DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `video_480_url` varchar(500) DEFAULT NULL,
+  `video_720_url` varchar(500) DEFAULT NULL,
+  `video_1080_url` varchar(500) DEFAULT NULL,
+  `dl_480_url` varchar(500) DEFAULT NULL,
+  `dl_720_url` varchar(500) DEFAULT NULL,
+  `dl_1080_url` varchar(500) DEFAULT NULL,
+  `embed_480_url` varchar(500) DEFAULT NULL,
+  `embed_720_url` varchar(500) DEFAULT NULL,
+  `embed_1080_url` varchar(500) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `episodes`
 --
 
-INSERT INTO `episodes` (`id`, `anime_id`, `episode_number`, `title`, `slug`, `video_url`, `video_embed`, `duration`, `views`, `created_at`, `updated_at`) VALUES
-(3, 2, 1146, 'One Piece - Episode 1146', 'one-piece-episode-1146-ep-1146', '', 'https://api.wibufile.com/embed/49831995-2a61-4254-8353-7c31339b30a2', 24, 5, '2025-10-22 13:29:26', '2025-10-22 14:30:50'),
-(4, 3, 1, 'One Punch Man - 1', 'one-punch-man-1-ep-1', 'https://s0.wibufile.com/video01/OPM-S3-1-FULLHD-SAMEHADAKU.CARE.mp4', '', 24, 3, '2025-10-22 13:41:15', '2025-10-22 13:44:25'),
-(5, 3, 2, 'One Punch Man - 2', 'one-punch-man-2-ep-2', 'https://s0.wibufile.com/video01/OPM-S3-2-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 2, '2025-10-22 13:44:21', '2025-10-22 13:49:55'),
-(6, 4, 1, 'Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga - 1', 'ansatsusha-de-aru-ore-no-status-ga-yuusha-yori-mo-akiraka-ni-tsuyoi-no-da-ga-1-ep-1', 'https://s0.wibufile.com/video01/Sutetsuyo-01-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 2, '2025-10-22 13:50:32', '2025-10-22 13:55:19'),
-(7, 4, 2, 'Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga - 2', 'ansatsusha-de-aru-ore-no-status-ga-yuusha-yori-mo-akiraka-ni-tsuyoi-no-da-ga-2-ep-2', 'https://s0.wibufile.com/video01/Sutetsuyo-02-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 4, '2025-10-22 13:53:40', '2025-10-22 13:55:15'),
-(8, 5, 1, 'Chitose-kun wa Ramune Bin no Naka - 1', 'chitose-kun-wa-ramune-bin-no-naka-1-ep-1', 'https://s0.wibufile.com/video01/Chiramune-01-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 3, '2025-10-22 14:10:54', '2025-10-22 16:05:49'),
-(9, 5, 2, 'Chitose-kun wa Ramune Bin no Naka - Episode 2', 'chitose-kun-wa-ramune-bin-no-naka-episode-2-ep-2', 'https://s0.wibufile.com/video01/Chiramune-02-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 1, '2025-10-22 14:11:31', '2025-10-22 16:52:09'),
-(10, 5, 3, 'Chitose-kun wa Ramune Bin no Naka - Episode 3', 'chitose-kun-wa-ramune-bin-no-naka-episode-3-ep-3', 'https://s0.wibufile.com/video01/Chiramune-03-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 2, '2025-10-22 14:13:32', '2025-10-22 15:51:37'),
-(11, 6, 1, 'Tondemo Skill de Isekai Hourou Meshi 2 - Episode 1', 'tondemo-skill-de-isekai-hourou-meshi-2-episode-1-ep-1', 'https://s0.wibufile.com/video01/TondemoSkill-S2-01-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 2, '2025-10-22 14:17:43', '2025-10-22 15:57:32'),
-(12, 6, 2, 'Tondemo Skill de Isekai Hourou Meshi 2 - Episode 2', 'tondemo-skill-de-isekai-hourou-meshi-2-ep-2', 'https://s0.wibufile.com/video01/TondemoSkill-S2-02-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 1, '2025-10-22 14:21:22', '2025-10-22 14:30:48'),
-(13, 7, 9, 'Overlord Movie 3: Sei Oukoku-hen - Episode 9', 'overlord-movie-3-sei-oukoku-hen-ep-9', '', 'https://pixeldrain.com/u/zp1ZVVap?embed&style=solarized_dark', 120, 21, '2025-10-22 14:28:35', '2025-10-22 16:52:25');
+INSERT INTO `episodes` (`id`, `anime_id`, `episode_number`, `title`, `slug`, `video_url`, `video_embed`, `duration`, `views`, `created_at`, `updated_at`, `video_480_url`, `video_720_url`, `video_1080_url`, `dl_480_url`, `dl_720_url`, `dl_1080_url`, `embed_480_url`, `embed_720_url`, `embed_1080_url`) VALUES
+(3, 2, 1146, 'One Piece - Episode 1146', 'one-piece-ep-1146', '', 'https://api.wibufile.com/embed/49831995-2a61-4254-8353-7c31339b30a2', 24, 16, '2025-10-22 13:29:26', '2025-10-26 07:37:07', 'https://xshotcok.com/embed-89hm8yd0kbbg.html', '', '', '', '', '', 'https://xshotcok.com/embed-89hm8yd0kbbg.html', 'https://xshotcok.com/embed-89hm8yd0kbbg.html', 'https://xshotcok.com/embed-89hm8yd0kbbg.html'),
+(4, 3, 1, 'One Punch Man 3 - Episode 1', 'one-punch-man-3-ep-1', 'https://s0.wibufile.com/video01/OPM-S3-1-FULLHD-SAMEHADAKU.CARE.mp4', '', 24, 13, '2025-10-22 13:41:15', '2025-10-26 06:13:54', NULL, NULL, NULL, 'https://hxfile.co/hmuecqawe9dl', 'https://hxfile.co/sgg0qxyyk92c', 'https://hxfile.co/b9htfksjvn7z', 'https://xshotcok.com/embed-hmuecqawe9dl.html', 'https://xshotcok.com/embed-sgg0qxyyk92c.html', 'https://xshotcok.com/embed-b9htfksjvn7z.html'),
+(5, 3, 2, 'One Punch Man 3 - Episode 2', 'one-punch-man-3-ep-2', 'https://s0.wibufile.com/video01/OPM-S3-2-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 3, '2025-10-22 13:44:21', '2025-10-26 06:25:27', NULL, NULL, NULL, '', 'https://hxfile.co/gm2x6py3zk4k', 'https://hxfile.co/opc18msd8het', '', 'https://xshotcok.com/embed-gm2x6py3zk4k.html', 'https://xshotcok.com/embed-opc18msd8het.html'),
+(6, 4, 1, 'Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga - Episode 1', 'ansatsusha-de-aru-ore-no-status-ga-yuusha-yori-mo-akiraka-ni-tsuyoi-no-da-ga-ep-1', 'https://s0.wibufile.com/video01/Sutetsuyo-01-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 2, '2025-10-22 13:50:32', '2025-10-26 06:06:59', NULL, NULL, NULL, '', 'https://hxfile.co/2llomwwazzom', 'https://hxfile.co/4x3c2vqocewj', '', 'https://xshotcok.com/embed-2llomwwazzom.html', 'https://xshotcok.com/embed-4x3c2vqocewj.html'),
+(7, 4, 2, 'Ansatsusha de Aru Ore no Status ga Yuusha yori mo Akiraka ni Tsuyoi no da ga - Episode 2', 'ansatsusha-de-aru-ore-no-status-ga-yuusha-yori-mo-akiraka-ni-tsuyoi-no-da-ga-ep-2', 'https://s0.wibufile.com/video01/Sutetsuyo-02-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 4, '2025-10-22 13:53:40', '2025-10-26 06:13:03', NULL, NULL, NULL, '', 'https://hxfile.co/yme6yrlf570r', 'https://hxfile.co/ov0n980jo2oc', '', 'https://xshotcok.com/embed-yme6yrlf570r.html', 'https://xshotcok.com/embed-ov0n980jo2oc.html'),
+(11, 6, 1, 'Tondemo Skill de Isekai Hourou Meshi 2 - Episode 1', 'tondemo-skill-de-isekai-hourou-meshi-2-ep-1', 'https://s0.wibufile.com/video01/TondemoSkill-S2-01-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 3, '2025-10-22 14:17:43', '2025-10-26 06:48:40', NULL, NULL, NULL, '', 'https://hxfile.co/2m2x056rwqpo', 'https://hxfile.co/ggpmikpatl0y', '', 'https://xshotcok.com/embed-2m2x056rwqpo.html', 'https://xshotcok.com/embed-ggpmikpatl0y.html'),
+(12, 6, 2, 'Tondemo Skill de Isekai Hourou Meshi 2 - Episode 2', 'tondemo-skill-de-isekai-hourou-meshi-2-ep-2', 'https://s0.wibufile.com/video01/TondemoSkill-S2-02-FULLHD-SAMEHADAKU.CARE.mp4', '', 0, 3, '2025-10-22 14:21:22', '2025-10-26 06:52:49', NULL, NULL, NULL, '', 'https://hxfile.co/12cjmb48bssh', 'https://hxfile.co/e238lfjx5avg', '', 'https://xshotcok.com/embed-12cjmb48bssh.html', 'https://xshotcok.com/embed-e238lfjx5avg.html'),
+(13, 7, 1, 'Overlord Movie 3: Sei Oukoku-hen - Episode 1', 'overlord-movie-3-sei-oukoku-hen-ep-1', '', 'https://pixeldrain.com/u/zp1ZVVap?embed&style=solarized_dark', 120, 26, '2025-10-22 14:28:35', '2025-10-26 05:18:52', NULL, NULL, NULL, '', '', 'https://hxfile.co/97mt41c1o4sx.html', '', '', 'https://xshotcok.com/embed-97mt41c1o4sx.html'),
+(14, 8, 1, 'Mugen Gacha - Episode 1', 'mugen-gacha-ep-1', NULL, NULL, 0, 0, '2025-10-26 05:25:13', '2025-10-26 05:25:13', NULL, NULL, NULL, '', '', 'https://hxfile.co/89hm8yd0kbbg', '', '', 'https://xshotcok.com/embed-89hm8yd0kbbg.html'),
+(15, 8, 2, 'Mugen Gacha - Episode 2', 'mugen-gacha-ep-2', NULL, NULL, 0, 2, '2025-10-26 05:25:34', '2025-10-26 05:26:27', NULL, NULL, NULL, '', '', 'https://hxfile.co/ba32bytag52i', '', '', 'https://xshotcok.com/embed-ba32bytag52i.html'),
+(16, 8, 3, 'Mugen Gacha - Episode 3', 'mugen-gacha-ep-3', NULL, NULL, 0, 0, '2025-10-26 05:27:01', '2025-10-26 05:27:01', NULL, NULL, NULL, '', '', 'https://hxfile.co/xsh3q4mfpaks', '', '', 'https://xshotcok.com/embed-xsh3q4mfpaks.html'),
+(17, 8, 4, 'Mugen Gacha - Episode 4', 'mugen-gacha-ep-4', NULL, NULL, 0, 0, '2025-10-26 05:27:32', '2025-10-26 05:27:32', NULL, NULL, NULL, '', '', 'https://hxfile.co/cy7qt7pnxoyq', '', '', 'https://xshotcok.com/embed-cy7qt7pnxoyq.html'),
+(18, 9, 1, 'Chitose Is in the Ramune Bottle - Episode 1', 'chitose-is-in-the-ramune-bottle-ep-1', NULL, NULL, 0, 0, '2025-10-26 05:33:27', '2025-10-26 05:33:27', NULL, NULL, NULL, 'https://hxfile.co/zf138aw90yp2', 'https://hxfile.co/81svu3090a3j', 'https://hxfile.co/5eqck0lm9tsd', 'https://xshotcok.com/embed-zf138aw90yp2.html', 'https://xshotcok.com/embed-81svu3090a3j.html', 'https://xshotcok.com/embed-5eqck0lm9tsd.html'),
+(19, 9, 2, 'Chitose Is in the Ramune Bottle - Episode 2', 'chitose-is-in-the-ramune-bottle-ep-2', NULL, NULL, 0, 0, '2025-10-26 05:46:58', '2025-10-26 05:46:58', NULL, NULL, NULL, '', 'https://hxfile.co/gn7iyqenfcig', 'https://hxfile.co/6auz76fpk1f7', '', 'https://xshotcok.com/embed-gn7iyqenfcig.html', 'https://xshotcok.com/embed-6auz76fpk1f7.html'),
+(20, 9, 3, 'Chitose Is in the Ramune Bottle - Episode 3', 'chitose-is-in-the-ramune-bottle-ep-3', NULL, NULL, 0, 0, '2025-10-26 05:59:20', '2025-10-26 05:59:20', NULL, NULL, NULL, '', 'https://hxfile.co/i4dtwdf6lo7j', 'https://hxfile.co/kfmykan7dusi', '', 'https://xshotcok.com/embed-i4dtwdf6lo7j.html', 'https://xshotcok.com/embed-kfmykan7dusi.html'),
+(21, 3, 3, 'One Punch Man 3 - Episode 3', 'one-punch-man-3-ep-3', NULL, NULL, 0, 3, '2025-10-26 06:35:54', '2025-10-26 09:28:35', NULL, NULL, NULL, '', 'https://hxfile.co/0g721q9zoprl', 'https://hxfile.co/olwbey3p4beb', '', 'https://xshotcok.com/embed-0g721q9zoprl.html', 'https://xshotcok.com/embed-olwbey3p4beb.html'),
+(22, 6, 3, 'Tondemo Skill de Isekai Hourou Meshi 2 - Episode 3', 'tondemo-skill-de-isekai-hourou-meshi-2-ep-3', NULL, NULL, 0, 0, '2025-10-26 07:00:40', '2025-10-26 07:33:51', NULL, NULL, NULL, '', 'https://hxfile.co/c1ujbmedr7j1', 'https://hxfile.co/l5fax9w9nn8f', '', 'https://xshotcok.com/embed-c1ujbmedr7j1.html', 'https://xshotcok.com/embed-l5fax9w9nn8f.html'),
+(23, 10, 3, 'Mikata Ga Yowasugite Hojo Mahou - Episode 3', 'mikata-ga-yowasugite-hojo-mahou-ep-3', NULL, NULL, 0, 0, '2025-10-26 09:00:16', '2025-10-26 09:00:16', NULL, NULL, NULL, '', '', 'https://hxfile.co/zmtlfbl2et3h', '', '', 'https://xshotcok.com/embed-zmtlfbl2et3h.html'),
+(24, 10, 4, 'Mikata Ga Yowasugite Hojo Mahou - Episode 4', 'mikata-ga-yowasugite-hojo-mahou-ep-4', NULL, NULL, 0, 0, '2025-10-26 09:09:05', '2025-10-26 09:09:05', NULL, NULL, NULL, '', '', 'https://hxfile.co/u47rfsjx1tja', '', '', 'https://xshotcok.com/embed-u47rfsjx1tja.html');
 
 -- --------------------------------------------------------
 
@@ -355,25 +390,25 @@ ALTER TABLE `watchlist`
 -- AUTO_INCREMENT untuk tabel `admins`
 --
 ALTER TABLE `admins`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `animes`
 --
 ALTER TABLE `animes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT untuk tabel `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `episodes`
 --
 ALTER TABLE `episodes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `genres`

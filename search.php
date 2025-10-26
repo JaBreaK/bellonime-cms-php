@@ -15,11 +15,10 @@ if (strlen($query) < 2) {
 $db = Database::getInstance()->getConnection();
 
 $sql = "SELECT a.id, a.title, a.slug, a.poster, a.type, a.status, a.year,
-        (SELECT COUNT(*) FROM episodes WHERE anime_id = a.id) as episode_count,
-        MATCH(a.title, a.synopsis) AGAINST(:query IN NATURAL LANGUAGE MODE) as relevance
+        (SELECT COUNT(*) FROM episodes WHERE anime_id = a.id) as episode_count
         FROM animes a
         WHERE a.title LIKE :query_like OR a.synopsis LIKE :query_like
-        ORDER BY relevance DESC, a.views DESC
+        ORDER BY a.views DESC, a.created_at DESC
         LIMIT 10";
 
 $stmt = $db->prepare($sql);
@@ -37,7 +36,7 @@ foreach ($results as $result) {
         'id' => $result['id'],
         'title' => $result['title'],
         'slug' => $result['slug'],
-        'poster' => ASSETS_URL . 'images/' . ($result['poster'] ?: 'placeholder.jpg'),
+        'poster' => getImageUrl($result['poster'] ?? ''),
         'type' => $result['type'],
         'status' => $result['status'],
         'year' => $result['year'],

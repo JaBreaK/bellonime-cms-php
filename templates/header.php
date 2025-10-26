@@ -150,7 +150,7 @@
                             this.loading = true;
                             
                             try {
-                                const response = await fetch(`<?= BASE_URL ?>search.php?q=${encodeURIComponent(this.query)}`);
+                                const response = await fetch(`search.php?q=${encodeURIComponent(this.query)}`);
                                 this.results = await response.json();
                             } catch (error) {
                                 console.error('Search error:', error);

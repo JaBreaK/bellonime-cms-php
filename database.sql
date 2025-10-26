@@ -49,8 +49,21 @@ CREATE TABLE episodes (
     episode_number INT NOT NULL,
     title VARCHAR(255),
     slug VARCHAR(255) NOT NULL,
+    -- Legacy fields (no longer used in admin UI)
     video_url VARCHAR(500),
     video_embed TEXT,
+    -- Per-quality EMBED URLs (prefer using normalized embed links/iframe src)
+    embed_480_url VARCHAR(500),
+    embed_720_url VARCHAR(500),
+    embed_1080_url VARCHAR(500),
+    -- HXFile filecodes per kualitas
+    hxfile_480_code VARCHAR(50),
+    hxfile_720_code VARCHAR(50),
+    hxfile_1080_code VARCHAR(50),
+    -- Per-quality download URLs (single download button will switch href)
+    dl_480_url VARCHAR(500),
+    dl_720_url VARCHAR(500),
+    dl_1080_url VARCHAR(500),
     duration INT DEFAULT 0, -- dalam menit
     views INT DEFAULT 0,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

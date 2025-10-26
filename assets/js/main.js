@@ -95,6 +95,26 @@ function truncateText(text, maxLength) {
 function initVideoPlayer() {
     const players = document.querySelectorAll('.video-player');
     players.forEach(player => {
+        // Build dynamic quality map from data attributes (data-quality480, data-quality720, data-quality1080)
+        const ds = player.dataset || {};
+        const qualityMap = {};
+        const qualityOptions = [];
+        ['480', '720', '1080'].forEach(q => {
+            const key = 'quality' + q;
+            const url = ds[key] || '';
+            if (url && typeof url === 'string' && url.length > 0) {
+                const qNum = parseInt(q, 10);
+                qualityOptions.push(qNum);
+                qualityMap[qNum] = url;
+            }
+        });
+
+        // Determine default quality: dataset.defaultQuality or highest available
+        let defaultQuality = parseInt(ds.defaultQuality || '', 10);
+        if (!qualityOptions.includes(defaultQuality)) {
+            defaultQuality = qualityOptions.length ? Math.max(...qualityOptions) : 0;
+        }
+
         // Initialize Plyr.io if available
         if (typeof Plyr !== 'undefined') {
             const plyr = new Plyr(player, {
@@ -113,11 +133,23 @@ function initVideoPlayer() {
                 ],
                 settings: ['captions', 'quality', 'speed', 'loop'],
                 quality: {
-                    default: 720,
-                    options: [360, 480, 720, 1080],
-                    forced: true,
-                    onChange: function(quality) {
-                        console.log('Quality changed to:', quality);
+                    default: defaultQuality || 720,
+                    options: qualityOptions.length ? qualityOptions : [360, 480, 720, 1080],
+                    forced: qualityOptions.length > 0,
+                    onChange: function (quality) {
+                        const url = qualityMap[quality];
+                        if (url) {
+                            const currentTime = plyr.currentTime;
+                            plyr.pause();
+                            plyr.source = {
+                                type: 'video',
+                                sources: [{ src: url, type: 'video/mp4' }]
+                            };
+                            plyr.once('loadeddata', function () {
+                                try { plyr.currentTime = currentTime; } catch (e) {}
+                                plyr.play();
+                            });
+                        }
                     }
                 },
                 speed: {
@@ -190,12 +222,50 @@ function initVideoPlayer() {
                     qualityBadge: '{quality}'
                 }
             });
-            
-            // Store player instance for global access
+
+            // Store player instance and quality map for global access
             player.plyr = plyr;
+            player.qualityMap = qualityMap;
+
+            // If default quality is defined and has URL, ensure the player uses it initially
+            if (defaultQuality && qualityMap[defaultQuality]) {
+                const currentSrcEl = player.querySelector('source');
+                const currentSrc = currentSrcEl ? currentSrcEl.getAttribute('src') : '';
+                if (!currentSrc || currentSrc !== qualityMap[defaultQuality]) {
+                    const currentTime = plyr.currentTime || 0;
+                    plyr.source = {
+                        type: 'video',
+                        sources: [{ src: qualityMap[defaultQuality], type: 'video/mp4' }]
+                    };
+                    plyr.once('loadeddata', function () {
+                        try { plyr.currentTime = currentTime; } catch (e) {}
+                    });
+                }
+            }
         }
     });
 }
+
+// Global helper: change quality programmatically (used by quality buttons)
+window.setPlayerQuality = function (quality) {
+    const players = document.querySelectorAll('.video-player');
+    players.forEach(player => {
+        if (player.plyr && player.qualityMap && player.qualityMap[quality]) {
+            const plyr = player.plyr;
+            const url = player.qualityMap[quality];
+            const currentTime = plyr.currentTime;
+            plyr.pause();
+            plyr.source = {
+                type: 'video',
+                sources: [{ src: url, type: 'video/mp4' }]
+            };
+            plyr.once('loadeddata', function () {
+                try { plyr.currentTime = currentTime; } catch (e) {}
+                plyr.play();
+            });
+        }
+    });
+};
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
