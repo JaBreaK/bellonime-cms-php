@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bellonime - HXFile & Quality Features Collage (SVG) -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; } /* slate-900 */
+      .panel { fill: #111827; stroke: #374151; stroke-width: 2; rx: 12; } /* gray-900 with gray-700 stroke */
+      .accent { fill: #2563eb; } /* blue-600 */
+      .accent2 { fill: #10b981; } /* emerald-500 */
+      .accent3 { fill: #f59e0b; } /* amber-500 */
+      .accent4 { fill: #f43f5e; } /* rose-500 */
+      .barbg { fill: #1f2937; } /* gray-800 */
+      .bar { fill: #3b82f6; } /* blue-500 */
+      .txt-title { fill: #e5e7eb; font-family: 'Segoe UI', Tahoma, sans-serif; font-weight: 700; font-size: 28px; }
+      .txt-sub { fill: #d1d5db; font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 18px; }
+      .txt-small { fill: #9ca3af; font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 14px; }
+      .chip { fill: #111827; stroke: #374151; stroke-width: 1.5; rx: 16; }
+      .chip-text { fill: #d1d5db; font-family: 'Segoe UI', Tahoma, sans-serif; font-size: 14px; }
+      .btn { fill: #2563eb; rx: 8; }
+      .btn-text { fill: #ffffff; font-family: 'Segoe UI', Tahoma, sans-serif; font-weight: 600; font-size: 16px; }
+      .code { fill: #e5e7eb; font-family: 'Consolas', 'Courier New', monospace; font-size: 14px; }
+      .frame { fill: none; stroke: #374151; stroke-width: 1; stroke-dasharray: 4 4; rx: 8; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" x="0" y="0" width="1200" height="800"/>
+  <text class="txt-title" x="40" y="60">Bellonime — HXFile & Quality Features</text>
+  <text class="txt-sub" x="40" y="95">Direct upload to HXFile, per-quality streams, auto-filled links, and upload progress</text>
+
+  <!-- Panel 1: Quality Dropdown -->
+  <rect class="panel" x="40" y="130" width="520" height="280"/>
+  <text class="txt-sub" x="60" y="160">Per-Quality Selection</text>
+  <text class="txt-small" x="60" y="185">480p • 720p • 1080p — dropdown on watch page</text>
+
+  <!-- Mock player frame -->
+  <rect class="frame" x="60" y="205" width="480" height="160"/>
+  <rect class="btn" x="60" y="375" width="120" height="28"/>
+  <text class="btn-text" x="72" y="395">Play</text>
+
+  <!-- Quality chips -->
+  <rect class="chip" x="200" y="375" width="90" height="28"/>
+  <text class="chip-text" x="220" y="394">480p</text>
+  <rect class="chip" x="300" y="375" width="90" height="28"/>
+  <text class="chip-text" x="320" y="394">720p</text>
+  <rect class="chip" x="400" y="375" width="100" height="28"/>
+  <text class="chip-text" x="420" y="394">1080p</text>
+
+  <!-- Panel 2: Direct-to-HXFile Upload -->
+  <rect class="panel" x="640" y="130" width="520" height="280"/>
+  <text class="txt-sub" x="660" y="160">Direct-to-HXFile Upload</text>
+  <text class="txt-small" x="660" y="185">Ticket → Browser posts file to fsX.hxfile.co</text>
+
+  <!-- Steps visualization -->
+  <circle class="accent" cx="680" cy="220" r="10"/>
+  <text class="txt-small" x="700" y="224">Request ticket: [admin/hxfile-ticket.php]</text>
+
+  <circle class="accent2" cx="680" cy="260" r="10"/>
+  <text class="txt-small" x="700" y="264">Upload via XHR: POST sess_id + file → server_url</text>
+
+  <circle class="accent3" cx="680" cy="300" r="10"/>
+  <text class="txt-small" x="700" y="304">Extract filecode or lookup by filename</text>
+
+  <circle class="accent4" cx="680" cy="340" r="10"/>
+  <text class="txt-small" x="700" y="344">Auto-fill embed/download in admin form</text>
+
+  <!-- Panel 3: Upload Progress -->
+  <rect class="panel" x="40" y="440" width="520" height="280"/>
+  <text class="txt-sub" x="60" y="470">Upload Progress & UX</text>
+  <text class="txt-small" x="60" y="495">Disables Save/Update while upload is in progress</text>
+
+  <!-- Progress bar -->
+  <rect class="barbg" x="60" y="520" width="480" height="16" rx="8"/>
+  <rect class="bar" x="60" y="520" width="320" height="16" rx="8"/>
+  <text class="txt-small" x="550" y="532">66%</text>
+
+  <!-- Status text -->
+  <text class="txt-small" x="60" y="555">Status: Uploading to HXFile... 66%</text>
+
+  <!-- Hidden flags & code -->
+  <rect class="frame" x="60" y="580" width="480" height="120"/>
+  <text class="code" x="70" y="610"><input type="hidden" name="hxfile_uploaded_720" value="1"></text>
+  <text class="code" x="70" y="635"><input type="hidden" name="hxfile_filecode_720" value="w8tdsftzo62k"></text>
+  <text class="txt-small" x="60" y="705">Prevents re-upload on Save/Update; links are auto-filled</text>
+
+  <!-- Panel 4: Auto-Filled Links -->
+  <rect class="panel" x="640" y="440" width="520" height="280"/>
+  <text class="txt-sub" x="660" y="470">Auto-Filled Embed & Download</text>
+  <text class="txt-small" x="660" y="495">Embed: https://hxfile.co/<code>.html • Download: https://hxfile.co/<code></text>
+
+  <!-- Links box -->
+  <rect class="frame" x="660" y="520" width="480" height="180"/>
+  <text class="code" x="670" y="560">embed_720_url = "https://hxfile.co/w8tdsftzo62k.html"</text>
+  <text class="code" x="670" y="590">dl_720_url    = "https://hxfile.co/w8tdsftzo62k"</text>
+  <text class="txt-small" x="660" y="725">Works for 480p, 720p, and 1080p; quality dropdown binds accordingly</text>
+
+  <!-- Footer -->
+  <text class="txt-small" x="40" y="770">Bellonime • PHP + Tailwind • HXFile Integration • October 2025</text>
+</svg>

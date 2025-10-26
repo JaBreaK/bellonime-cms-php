@@ -270,3 +270,119 @@ Jika mengalami masalah:
 ---
 
 **Happy Coding! 🎉**
+
+## Fitur Baru: Kualitas Video & Integrasi HXFile (Oktober 2025)
+
+- Dropdown kualitas per episode (480p, 720p, 1080p) di halaman nonton.
+- Integrasi HXFile:
+  - Upload langsung dari browser ke HXFile (direct-to-HXFile), tanpa lewat hosting.
+  - Auto-fill link Embed dan Download berdasarkan filecode.
+  - Progress bar dan persentase upload di form admin.
+  - Hindari re-upload saat klik Simpan/Update (file input dibersihkan + hidden flags).
+  - Fallback pintar:
+    - Jika direct upload gagal, fallback ke endpoint server (opsional).
+    - Lookup filecode berdasarkan nama file jika respon upload belum memuat filecode.
+  - Nama file dan MIME dipertahankan (tidak .tmp), mis. .mp4.
+
+Bagian kode inti:
+- Ticket (server_url, sess_id) untuk direct upload: [admin/hxfile-ticket.php](admin/hxfile-ticket.php:1)
+- Direct upload fallback (server-side): [admin/hxfile-upload.php](admin/hxfile-upload.php:1)
+- Lookup filecode by filename: [admin/hxfile-lookup.php](admin/hxfile-lookup.php:1)
+- Admin form (progress UI + direct upload + auto-fill): [admin/episode-form.php](admin/episode-form.php:262)
+- Logika simpan/edit (hindari re-upload, isi otomatis dari filecode): [admin/manage-episode.php](admin/manage-episode.php:76)
+- Resolusi API key HXFile: [core/functions.php](core/functions.php:453)
+
+## Konfigurasi HXFile
+
+Set API key HXFile lewat environment variable:
+```bash
+# Windows Powershell
+$env:HXFILE_API_KEY="your_api_key_here"
+
+# Linux/Mac
+export HXFILE_API_KEY="your_api_key_here"
+```
+
+Atau definisikan constant di PHP (opsi alternatif):
+```php
+define('HXFILE_API_KEY', 'your_api_key_here');
+```
+
+Fungsi resolver memprioritaskan ENV, lalu constant, lalu fallback contoh (ganti dengan milik Anda):
+- Resolver: [core/functions.php](core/functions.php:453)
+
+Direkomendasikan menambah batas upload saat pengembangan/hosting (opsional):
+- .htaccess (contoh):
+```apache
+php_value upload_max_filesize 512M
+php_value post_max_size 512M
+php_value memory_limit 1024M
+php_value max_execution_time 600
+php_value max_input_time 600
+```
+
+## Cara Pakai (Admin) – HXFile Direct Upload
+
+1. Buka Admin → Manage Episode → Tambah/Edit.
+2. Pada bagian “HXFile Upload per Kualitas”, pilih file untuk 480/720/1080.
+3. Proses akan:
+   - Minta ticket ke server: [admin/hxfile-ticket.php](admin/hxfile-ticket.php:1)
+   - Upload langsung dari browser ke HXFile (progress tampil).
+   - Auto-fill input Embed/Download.
+   - Set hidden flags + filecode agar saat Simpan/Update tidak re-upload: [admin/manage-episode.php](admin/manage-episode.php:76)
+4. Jika direct upload gagal, fallback ke endpoint server: [admin/hxfile-upload.php](admin/hxfile-upload.php:1)
+5. Jika response upload tidak mengembalikan filecode, sistem lookup berdasarkan nama file: [admin/hxfile-lookup.php](admin/hxfile-lookup.php:1)
+
+## Screenshot
+
+> Seluruh screenshot berada di folder `./foto`. Berikut beberapa tampilan utama.
+
+- Beranda  
+  ![Beranda](foto/beranda.png)
+
+- Daftar Anime  
+  ![Daftar Anime](foto/daftar%20anime.png)
+
+- Detail Anime  
+  ![Detail Anime](foto/detail%20anime.png)
+
+- Nonton Anime (dengan opsi kualitas)  
+  ![Nonton Anime](foto/nonton%20anime.png)
+
+- Halaman Genre  
+  ![Genre](foto/genre.png)
+
+- Admin Login  
+  ![Admin Login](foto/admin-login.png)
+
+- Admin Dashboard  
+  ![Admin Dashboard](foto/admin-dashboard.png)
+
+- Admin: Manage Anime  
+  ![Manage Anime](foto/admin-m.anime.png)
+
+- Admin: Manage Episode  
+  ![Manage Episode](foto/admin-m.episode.png)
+
+- Admin: Manage Genre  
+  ![Manage Genre](foto/admin-m.genre.png)
+
+- Admin: Tambah/Edit Anime  
+  ![Tambah/Edit Anime](foto/admin-tambah%20atau%20edit%20anime.png)
+
+- Admin: Tambah/Edit Genre  
+  ![Tambah/Edit Genre](foto/admin-tambah%20atau%20edit%20genre.png)
+
+- Admin: Tambah/Edit Episode (dengan HXFile upload)  
+  ![Tambah/Edit Episode](foto/admin-edit%20atau%20tambah%20episode.png)
+
+
+## Additional Media
+
+The HXFile &amp; Quality Features visual summary is now available:
+
+- SVG Collage: foto/hxfile-features.svg
+
+Preview:
+
+![HXFile &amp; Quality Features](foto/hxfile-features.svg)
