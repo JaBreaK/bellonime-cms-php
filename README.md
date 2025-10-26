@@ -1,3 +1,9 @@
+# 👋 Halo, Saya **Ade Tri Fauzan**
+
+📘 **Mahasiswa Universitas Pamulang**  
+🧩 **NIM:** 221011401619  
+🧠 **Kelas:** 07TPLP020 
+
 # Bellonime - Anime Streaming Website
 
 Website streaming anime yang dibuat dengan PHP Native dan Tailwind CSS. Proyek ini adalah implementasi lengkap dari sistem manajemen konten anime dengan fitur admin panel dan user interface yang modern.
