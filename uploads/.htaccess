@@ -1,0 +1,13 @@
+# Deny direct access to uploaded files for security
+# Files should be served through PHP scripts
+
+<Files "*">
+    Order Deny,Allow
+    Deny from all
+</Files>
+
+# Allow only specific file types to be accessed
+<FilesMatch "\.(jpg|jpeg|png|gif|webp|mp4|webm|mkv)$">
+    Order Allow,Deny
+    Allow from all
+</FilesMatch>

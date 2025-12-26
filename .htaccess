@@ -1,0 +1,105 @@
+# Enable URL rewriting
+RewriteEngine On
+
+# Set the base directory
+RewriteBase /bellonime/
+
+# Prevent directory listing
+Options -Indexes
+
+# Redirect to trailing slash if it's a directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !(.*)/$
+RewriteRule ^(.*)$ http://%{HTTP_HOST}%{REQUEST_URI}/ [L,R=301]
+
+# Handle static files directly
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Custom URL routes
+# Anime detail: /anime/slug-anime-123
+RewriteRule ^anime/([a-zA-Z0-9-]+)-([0-9]+)/?$ detail.php?id=$2 [L,QSA]
+
+# Watch page: /watch/slug-episode-123
+RewriteRule ^watch/([a-zA-Z0-9-]+)-([0-9]+)/?$ nonton.php?id=$2 [L,QSA]
+
+# Genre page: /genre/action
+RewriteRule ^genre/([a-zA-Z0-9-]+)/?$ genre.php?slug=$1 [L,QSA]
+
+# Search page: /search/query
+RewriteRule ^search/([a-zA-Z0-9-]+)/?$ search.php?q=$1 [L,QSA]
+
+# Admin routes
+RewriteRule ^admin/?$ admin/index.php [L,QSA]
+RewriteRule ^admin/login/?$ admin/login.php [L,QSA]
+RewriteRule ^admin/logout/?$ admin/logout.php [L,QSA]
+RewriteRule ^admin/manage-anime/?$ admin/manage-anime.php [L,QSA]
+RewriteRule ^admin/manage-episode/?$ admin/manage-episode.php [L,QSA]
+RewriteRule ^admin/manage-genre/?$ admin/manage-genre.php [L,QSA]
+
+# Security headers
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header always set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME type sniffing
+    Header always set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS protection
+    Header always set X-XSS-Protection "1; mode=block"
+    
+    # Content Security Policy (adjust as needed)
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.plyr.io https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.plyr.io https://cdn.jsdelivr.net https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://cdn.jsdelivr.net https://fonts.gstatic.com https://fonts.googleapis.com; media-src 'self' https:; connect-src 'self' https:; frame-src 'self' https:;"
+</IfModule>
+
+# PHP settings
+<IfModule mod_php7.c>
+    php_flag display_errors Off
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value memory_limit 256M
+</IfModule>
+
+<IfModule mod_php8.c>
+    php_flag display_errors Off
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value memory_limit 256M
+</IfModule>
+
+# Cache control for static assets
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    
+    # Video files
+    ExpiresByType video/mp4 "access plus 1 month"
+    ExpiresByType video/webm "access plus 1 month"
+</IfModule>
+
+# Compress text files
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/plain
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/xml
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE application/xml
+    AddOutputFilterByType DEFLATE application/xhtml+xml
+    AddOutputFilterByType DEFLATE application/rss+xml
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/x-javascript
+</IfModule>
+
+# Error pages
+ErrorDocument 404 /bellonime/404.php
